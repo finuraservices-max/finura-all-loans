@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Apply — Finura</title>
+  <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -19,7 +20,10 @@
   <main class="container">
     <h1>Apply for a Loan</h1>
     <p>Fill the form below and our advisor will contact you to proceed.</p>
-    <form id="apply-form" class="apply-form" method="post" action="#" novalidate>
+    <form id="apply-form" class="apply-form" name="apply" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" novalidate>
+      <input type="hidden" name="form-name" value="apply" />
+      <p class="hidden"><label>Don’t fill this out: <input name="bot-field-apply" /></label></p>
+
       <label>Full Name <input name="name" type="text" required/></label>
       <label>Email <input name="email" type="email" required/></label>
       <label>Phone <input name="phone" type="tel" required/></label>
@@ -38,11 +42,11 @@
       <button class="btn" type="submit">Submit Application</button>
     </form>
 
-    <p class="muted">Note: The form currently posts to a placeholder. Replace the action attribute with your backend endpoint or integrate a service like Netlify Forms, Formspree, or your CRM.</p>
+    <p class="muted">Note: The form posts to Netlify (if you deploy to Netlify) or to your chosen backend. To receive submissions via Netlify you just need to deploy the site to Netlify — forms will be captured automatically.</p>
   </main>
 
   <footer class="site-footer">
-    <div class="container"><p>&copy; <span id="year"></span> Finura</p></div>
+    <div class="container"><p>&copy; <span id="year'></span> Finura</p></div>
   </footer>
 
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

@@ -1,6 +1,6 @@
 :root{
   --navy:#07203a;
-  --gold:#c49a2b;
+  --gold:#b07f1f; /* slightly darker gold for WCAG AA contrast */
   --muted:#6b7280;
   --bg:#f7f8fb;
   --card:#fff;
@@ -38,3 +38,8 @@ th,td{padding:.45rem;border-bottom:1px solid #f0f3f7;text-align:left}
 .contact-form label{grid-column:span 2}
 @media(min-width:900px){.contact-form label:nth-child(1),.contact-form label:nth-child(2){grid-column:span 1}}
 .site-footer{padding:1.25rem 0;background:#e9eef6;color:#123}
+
+/* Accessibility: focus outlines */
+:focus{outline:3px solid #ffdca3;outline-offset:2px}
+button:focus, a:focus, input:focus, select:focus, textarea:focus{outline:3px solid #ffdca3}
+.hidden{display:none}

@@ -22,22 +22,34 @@
   <meta name="twitter:description" content="Home, personal, auto & business loans — use our EMI calculator to estimate monthly payments and interest." />
   <meta name="twitter:image" content="https://finuraservices-max.github.io/finura-all-loans/assets/logo.png" />
 
-  <!-- JSON-LD structured data (Organization) -->
+  <!-- JSON-LD structured data (LocalBusiness) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "FinancialService",
     "name": "Finura",
     "url": "https://finuraservices.com/",
     "logo": "https://finuraservices-max.github.io/finura-all-loans/assets/logo.png",
+    "telephone": "+91-0000000000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "addressCountry": "IN"
+    },
     "sameAs": []
   }
   </script>
 
+  <!-- SEO / OG fallback -->
   <meta property="og:title" content="Finura — All Loan Services" />
   <meta property="og:description" content="All loan products with simple EMI calculator and fast apply." />
   <meta property="og:image" content="assets/logo.png" />
-  <link rel="icon" href="assets/favicon.png" />
+  <link rel="icon" href="assets/logo.png" />
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -91,15 +103,18 @@
     <section id="emi" class="container emi-section">
       <h2>Quick EMI Calculator</h2>
       <div class="emi-wrapper">
-        <form id="emi-form" class="emi-form" aria-label="EMI calculator">
+        <form id="emi-form" class="emi-form" aria-label="EMI calculator" name="emi" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="emi" />
+          <p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+
           <label>Principal (₹ or currency)
-            <input id="principal" type="number" min="0" step="0.01" required />
+            <input id="principal" name="principal" type="number" min="0" step="0.01" required />
           </label>
           <label>Annual Interest Rate (%) 
-            <input id="rate" type="number" min="0" step="0.01" required />
+            <input id="rate" name="rate" type="number" min="0" step="0.01" required />
           </label>
           <label>Tenure (years)
-            <input id="tenure" type="number" min="0" step="0.1" required />
+            <input id="tenure" name="tenure" type="number" min="0" step="0.1" required />
           </label>
           <div class="form-actions">
             <button type="submit" class="btn">Calculate</button>
@@ -128,7 +143,9 @@
     <section id="contact" class="container contact">
       <h2>Contact Us</h2>
       <p>Questions? Reach out and our loan advisors will contact you.</p>
-      <form id="contact-form" class="contact-form" action="#" method="post" novalidate>
+      <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Don’t fill this out: <input name="bot-field-contact" /></label></p>
         <label>Name <input name="name" type="text" required /></label>
         <label>Email <input name="email" type="email" required /></label>
         <label>Phone <input name="phone" type="tel" /></label>
@@ -149,6 +166,19 @@
   <script>
     // small footer year script
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Netlify forms: optionally prevent default submit from navigating away and show a thank-you message
+    function handleNetlifyForm(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch('/', { method: 'POST', body: data }).then(()=>{
+        alert('Thanks — your submission was received.');
+        form.reset();
+      }).catch(()=>alert('Submission failed — please try again.'));
+    }
+    document.getElementById('contact-form').addEventListener('submit', handleNetlifyForm);
+    document.getElementById('emi-form').addEventListener('submit', handleNetlifyForm);
   </script>
 </body>
 </html>
