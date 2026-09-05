@@ -1,0 +1,40 @@
+:root{
+  --navy:#07203a;
+  --gold:#c49a2b;
+  --muted:#6b7280;
+  --bg:#f7f8fb;
+  --card:#fff;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;color:#0b2233;background:var(--bg);line-height:1.5}
+.container{max-width:1100px;margin:0 auto;padding:2rem}
+.site-header{background:linear-gradient(90deg,var(--navy),#04202f);color:white;padding:.75rem 0}
+.header-inner{display:flex;align-items:center;gap:1rem;justify-content:space-between}
+.brand{display:flex;align-items:center;text-decoration:none;color:inherit}
+.logo{height:56px}
+.main-nav a{color:white;margin:0 .6rem;text-decoration:none}
+.cta{background:var(--gold);color:var(--navy);padding:.5rem .9rem;border-radius:8px;text-decoration:none;font-weight:600}
+.hero{padding:4rem 0;background:linear-gradient(180deg,rgba(7,32,58,.95),rgba(7,32,58,.9));color:white}
+.hero .container{padding:3rem 0}
+.hero h1{margin:0 0 .5rem;font-size:2rem}
+.btn-primary{background:var(--gold);color:var(--navy);padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:700}
+.services .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:0 6px 18px rgba(11,34,51,.06)}
+.emi-section{margin-top:2rem;padding:1rem;background:linear-gradient(180deg,#fff, #fbfdff);border-radius:12px;box-shadow:0 8px 24px rgba(8,18,30,.04)}
+.emi-wrapper{display:flex;gap:1.5rem;flex-wrap:wrap}
+.emi-form{flex:1;min-width:240px;display:flex;flex-direction:column;gap:.6rem}
+.emi-form label{display:flex;flex-direction:column;font-size:.95rem}
+.emi-form input{padding:.6rem;border:1px solid #d6dbe1;border-radius:8px}
+.results{width:320px;background:var(--card);padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(8,18,30,.04)}
+.form-actions{display:flex;gap:.5rem;margin-top:.6rem}
+.btn{background:var(--navy);color:white;padding:.5rem .8rem;border-radius:8px;border:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--navy);border:1px solid #d0d7df}
+.small{padding:.3rem .5rem;font-size:.9rem}
+.amortization{margin-top:1rem;overflow:auto;background:var(--card);padding:1rem;border-radius:8px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:.45rem;border-bottom:1px solid #f0f3f7;text-align:left}
+.contact .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.contact-form label{grid-column:span 2}
+@media(min-width:900px){.contact-form label:nth-child(1),.contact-form label:nth-child(2){grid-column:span 1}}
+.site-footer{padding:1.25rem 0;background:#e9eef6;color:#123}

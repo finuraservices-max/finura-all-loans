@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Finura — All Loan Services | Energy of Finance</title>
+  <meta name="description" content="Finura — All loan products: home, personal, auto, business. Use our EMI calculator to estimate monthly payments and interest." />
+  <meta property="og:title" content="Finura — All Loan Services" />
+  <meta property="og:description" content="All loan products with simple EMI calculator and fast apply." />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="assets/logo.png" alt="Finura logo" class="logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#emi">EMI Calculator</a>
+        <a href="/apply.html">Apply</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="cta" href="/apply.html">Apply Now</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>All Loan Solutions — Simple, Transparent</h1>
+        <p>Home loans, personal loans, auto loans, business loans — tailored options and easy approvals.</p>
+        <a class="btn-primary" href="#emi">Try EMI Calculator</a>
+      </div>
+    </section>
+
+    <section id="services" class="container services">
+      <h2>Our Loan Products</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Home Loan</h3>
+          <p>Competitive rates and long tenures for your dream home.</p>
+        </article>
+        <article class="card">
+          <h3>Personal Loan</h3>
+          <p>Quick approvals with flexible repayment options.</p>
+        </article>
+        <article class="card">
+          <h3>Auto Loan</h3>
+          <p>Low down payment options and easy financing for vehicles.</p>
+        </article>
+        <article class="card">
+          <h3>Business Loan</h3>
+          <p>Working capital and growth funding for SMEs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="emi" class="container emi-section">
+      <h2>EMI Calculator</h2>
+      <div class="emi-wrapper">
+        <form id="emi-form" class="emi-form" aria-label="EMI calculator">
+          <label>Principal (₹ or currency)
+            <input id="principal" type="number" min="0" step="0.01" required />
+          </label>
+          <label>Annual Interest Rate (%) 
+            <input id="rate" type="number" min="0" step="0.01" required />
+          </label>
+          <label>Tenure (years)
+            <input id="tenure" type="number" min="0" step="0.1" required />
+          </label>
+          <div class="form-actions">
+            <button type="submit" class="btn">Calculate</button>
+            <button id="clear" type="button" class="btn ghost">Clear</button>
+          </div>
+        </form>
+
+        <aside class="results" aria-live="polite">
+          <h3>Results</h3>
+          <p>Monthly EMI: <strong id="emi-result">—</strong></p>
+          <p>Total Interest: <strong id="total-interest">—</strong></p>
+          <p>Total Payment: <strong id="total-payment">—</strong></p>
+          <button id="show-amort" class="btn small">Show Amortization</button>
+        </aside>
+      </div>
+
+      <div id="amortization" class="amortization" hidden>
+        <h4>Amortization Schedule (first 24 months)</h4>
+        <table id="amort-table">
+          <thead><tr><th>Month</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2>Contact Us</h2>
+      <p>Questions? Reach out and our loan advisors will contact you.</p>
+      <form id="contact-form" class="contact-form" action="#" method="post" novalidate>
+        <label>Name <input name="name" type="text" required /></label>
+        <label>Email <input name="email" type="email" required /></label>
+        <label>Phone <input name="phone" type="tel" /></label>
+        <label>Message <textarea name="message" rows="4"></textarea></label>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Finura. Energy of Finance.</p>
+      <p><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></p>
+    </div>
+  </footer>
+
+  <script src="emi-calculator.js"></script>
+  <script>
+    // small footer year script
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
