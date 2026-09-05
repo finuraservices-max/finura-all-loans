@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Finura — Home Loan Calculator</title>
+  <meta name="description" content="Home Loan calculator — estimate your monthly EMI, total interest, and amortization for a home loan." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="assets/logo.png" alt="Finura logo" class="logo" />
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <a href="/apply.html">Apply</a>
+      </nav>
+      <a class="cta" href="/apply.html">Apply Now</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Home Loan Calculator</h1>
+    <p>Estimate your monthly mortgage (EMI) including optional monthly property tax and insurance.</p>
+
+    <section class="emi-section">
+      <form id="home-form" class="emi-form" aria-label="Home loan calculator">
+        <label>Property Value
+          <input id="propertyValue" type="number" min="0" step="0.01" required />
+        </label>
+        <label>Down Payment
+          <input id="downPayment" type="number" min="0" step="0.01" value="0" />
+        </label>
+        <label>Loan Amount
+          <input id="loanAmount" type="number" min="0" step="0.01" readonly />
+        </label>
+        <label>Annual Interest Rate (%)
+          <input id="homeRate" type="number" min="0" step="0.01" value="7.5" required />
+        </label>
+        <label>Tenure (years)
+          <input id="homeTenure" type="number" min="0" step="0.1" value="20" required />
+        </label>
+        <label>Property Tax (monthly) (optional)
+          <input id="propTax" type="number" min="0" step="0.01" value="0" />
+        </label>
+        <label>Insurance (monthly) (optional)
+          <input id="insurance" type="number" min="0" step="0.01" value="0" />
+        </label>
+
+        <div class="form-actions">
+          <button id="home-calc" type="button" class="btn">Calculate</button>
+          <button id="home-clear" type="button" class="btn ghost">Clear</button>
+        </div>
+      </form>
+
+      <aside class="results" aria-live="polite">
+        <h3>Results</h3>
+        <p>Monthly EMI (principal + interest): <strong id="home-emi">—</strong></p>
+        <p>Monthly Payment (incl. tax & insurance): <strong id="home-total-monthly">—</strong></p>
+        <p>Total Interest: <strong id="home-total-interest">—</strong></p>
+        <p>Total Payment (principal + interest): <strong id="home-total-payment">—</strong></p>
+        <button id="home-show-amort" class="btn small">Show Amortization</button>
+      </aside>
+    </section>
+
+    <div id="home-amort" class="amortization" hidden>
+      <h4>Amortization Schedule (first 60 months)</h4>
+      <table id="home-amort-table">
+        <thead><tr><th>Month</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <p class="muted">Tip: adjust down payment to see how your monthly EMI changes. Use the Apply button to send your details to our advisors.</p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container"><p>&copy; <span id="year"></span> Finura</p></div>
+  </footer>
+
+  <script src="home-loan-calculator.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
